@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- Optimizacion Moviles -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+  <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    <link href="estilo-audio.css" rel="stylesheet">
+    <style type="text/css">
+        body { margin:0 auto; padding:0; background:#EEE; overflow: hidden; }
+        #titulo { font:bold 24px/36px Arial, sans-serif; color:#000; margin:40px auto 10px auto; display:none; text-shadow:#FFF 2px 2px 0; }
+        #descrip { font:13px/20px Arial, sans-serif; margin:15px auto; display:none; text-shadow:#FFF 1px 1px 0; }
+    </style>
+    <style>
+  .video-js .vjs-control-bar { 
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+.video-js.vjs-audio .vjs-big-play-button {
+  display: none;
+}
+</style>  
+</head>
+<body>
+  <h2 id="titulo">AM630 en VIVO</h2>
+    <h3 id="descrip"></h3>
+    <audio id="live" class="video-js vjs-default-skin" controls data-setup='{ "aspectRatio": "1:0", "fluid": true, "controlBar": {"fullscreenToggle": false}}'>
+<source src="https://5975e06a1f292.streamlock.net:4443/radio/am630.stream/playlist.m3u8" type="application/x-mpegURL">
+    
+    
+    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
+    <!-- <script src="https://videojs-vr.netlify.app/dist/videojs-vr.js"></script> -->
+   
+  <script>
+    var player = videojs('live'};   
+    });
+  </script>
+  
+       <script>
+        if (window == window.top) {
+            document.getElementById("titulo").style.display = "block";
+            document.getElementById("descrip").style.display = "block";
+            document.body.style.width = "70%";
+        } else {
+          window.addEventListener("message", function(evt) {
+            switch (evt.data) {
+              case "play":
+                player().play();
+                break;
+              case "pause":
+                player().pause();
+                break;
+            }
+          }
+                                 
+    );
+        }
+    </script>
+</body>
+</html>
